@@ -14,8 +14,20 @@ public class UserDTO {
 
     @Getter
     @Setter
-    public static class view{
+    public static class view {
+        private Long id;
         private String username;
         private String password;
+
+        public view(String username, String password) {
+            this.username = username;
+            this.password = password;
+        }
+
+        public view(User user) {
+            this.username = user.getUsername();
+            this.id = user.getId();
+            this.password = user.getPassword();
+        }
     }
 }

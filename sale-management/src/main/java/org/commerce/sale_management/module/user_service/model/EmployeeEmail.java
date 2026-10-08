@@ -2,7 +2,6 @@ package org.commerce.sale_management.module.user_service.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
@@ -15,19 +14,15 @@ import java.util.List;
  */
 @Entity
 @Getter
-@Table(name = "app_user")
+@Table(name = "test_employee_email")
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BasePrimaryIdEntity {
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<UserAddress> userAddressList;
+public class EmployeeEmail extends BasePrimaryIdEntity {
+    @Column(unique = true)
+    private String email;
+    private String facebook;
+    private String phone;
+    private String phone1;
 }

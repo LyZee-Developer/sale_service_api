@@ -1,6 +1,7 @@
 package org.commerce.sale_management.module.user_service.repository;
 
 import org.commerce.sale_management.module.user_service.model.User;
+import org.module.publish_service.specification.BaseCombineRepositorySpecification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>,JpaSpecificationExecutor<User> {
+public interface UserRepository extends BaseCombineRepositorySpecification<User, Long> {
 
 }
