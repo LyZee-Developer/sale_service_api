@@ -1,8 +1,8 @@
 package org.commerce.sale_management.module.user_service.dto;
 
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
+import org.commerce.sale_management.module.user_service.constant.UserRole;
 import org.commerce.sale_management.module.user_service.model.User;
 
 /**
@@ -17,17 +17,18 @@ public class UserDTO {
     public static class view {
         private Long id;
         private String username;
-        private String password;
+        private String fullName;
+        private UserRole role;
 
-        public view(String username, String password) {
+        public view(String username) {
             this.username = username;
-            this.password = password;
         }
 
         public view(User user) {
             this.username = user.getUsername();
             this.id = user.getId();
-            this.password = user.getPassword();
+            this.fullName = user.getFullName();
+            this.role = user.getRole();
         }
     }
 }

@@ -14,6 +14,7 @@ import org.commerce.sale_management.module.user_service.specification.filter.Use
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -30,6 +31,9 @@ public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepo
 
     @Autowired
     private UserAddressService userAddressService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Page<User> pageUser(Pageable pageable) {
@@ -51,11 +55,38 @@ public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepo
     public String save(UserRequest.save req) {
         User user = User.builder()
                 .username(req.getUsername())
-                .password(req.getPassword())
+                .password(passwordEncoder.encode(req.getPassword()))
+                .fullName(req.getFullName())
+                .role(req.getRole())
                 .build();
         this.save(user);
+        userAddressService.save(toUserAddressList(req.getUserAddress(), user));
+        return "create success";
+    }
 
-        List<UserAddress> userAddressList = Optional.ofNullable(req.getUserAddress())
+    @Transactional
+    @Override
+    public String update(UserRequest.update req) {
+        User user = this.findOneThrow(req.getId());
+        user.setUsername(req.getUsername());
+        user.setPassword(passwordEncoder.encode(req.getPassword()));
+        user.setFullName(req.getFullName());
+        user.setRole(req.getRole());
+        this.update(user);
+        userAddressService.replace(user, toUserAddressList(req.getUserAddress(), user));
+        return "update success";
+    }
+
+    @Override
+    public String disabled(Long id) {
+        User user = this.findOneThrow(id);
+        user.setIsActivate(Boolean.FALSE);
+        this.update(user);
+        return "disabled user!";
+    }
+
+    private List<UserAddress> toUserAddressList(List<UserRequest.UserAddressRequest> addressList, User user) {
+        return Optional.ofNullable(addressList)
                 .orElseGet(Collections::emptyList)
                 .stream()
                 .map(s-> {
@@ -68,22 +99,5 @@ public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepo
                     add.setUser(user);
                     return add;
                 }).toList();
-        userAddressService.save(userAddressList);
-        return "create success";
-    }
-
-    @Override
-    public String update(UserRequest.update req) {
-        User user = this.findOneThrow(req.getId());
-        this.save(user);
-        return "update success";
-    }
-
-    @Override
-    public String disabled(Long id) {
-        User user = this.findOneThrow(id);
-        user.setIsActivate(Boolean.FALSE);
-        this.update(user);
-        return "disabled user!";
     }
 }

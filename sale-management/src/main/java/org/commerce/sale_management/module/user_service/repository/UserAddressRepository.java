@@ -1,5 +1,6 @@
 package org.commerce.sale_management.module.user_service.repository;
 
+import org.commerce.sale_management.module.user_service.model.User;
 import org.commerce.sale_management.module.user_service.model.UserAddress;
 import org.module.publish_service.specification.BaseCombineRepositorySpecification;
 
@@ -9,4 +10,5 @@ import org.module.publish_service.specification.BaseCombineRepositorySpecificati
  * @date : 10/6/2026 6:27 AM
  */
 public interface UserAddressRepository extends BaseCombineRepositorySpecification<UserAddress,Long> {
+    void deleteByUser(User user);
 }

@@ -25,10 +25,7 @@ public class UserSpecification extends BaseInternalSpecification<User, UserReque
         //search
         if(!StringUtil.isNullOrEmpty(queryFilters.getSearch())){
             String search = queryFilters.getSearch().trim();
-            predicates.add(cb.or(
-                    cb.like(cb.lower(root.get(User_.USERNAME)), "%"+ search.toLowerCase() +"%"),
-                    cb.like(cb.lower(root.get(User_.PASSWORD)), "%"+ search.toLowerCase() +"%")
-            ));
+            predicates.add(cb.like(cb.lower(root.get(User_.USERNAME)), "%"+ search.toLowerCase() +"%"));
         }
     }
 }

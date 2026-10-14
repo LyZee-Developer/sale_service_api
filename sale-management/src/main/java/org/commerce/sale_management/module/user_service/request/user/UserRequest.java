@@ -3,8 +3,10 @@ package org.commerce.sale_management.module.user_service.request.user;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.commerce.sale_management.module.user_service.constant.UserRole;
 import org.commerce.sale_management.module.user_service.model.UserAddress;
 
 import java.util.List;
@@ -26,6 +28,13 @@ public class UserRequest {
 
         @NotBlank(message = "field password is required!")
         private String password;
+
+        @NotBlank(message = "field fullName is required!")
+        @Size(max = 150)
+        private String fullName;
+
+        @NotNull(message = "field role is required!")
+        private UserRole role;
 
         @NotNull
         private List<UserAddressRequest> userAddress;

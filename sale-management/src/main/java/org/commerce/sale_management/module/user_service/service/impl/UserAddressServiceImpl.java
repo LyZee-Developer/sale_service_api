@@ -1,5 +1,6 @@
 package org.commerce.sale_management.module.user_service.service.impl;
 
+import org.commerce.sale_management.module.user_service.model.User;
 import org.commerce.sale_management.module.user_service.model.UserAddress;
 import org.commerce.sale_management.module.user_service.repository.UserAddressRepository;
 import org.commerce.sale_management.module.user_service.service.BaseInternalAppService;
@@ -19,6 +20,12 @@ import java.util.List;
 public class UserAddressServiceImpl extends BaseInternalAppService<UserAddress,Long, UserAddressRepository, UserAddressRequestFilter, UserAddressSpecification> implements UserAddressService {
     @Override
     public List<UserAddress> save(List<UserAddress> add) {
+        return this.saveAll(add);
+    }
+
+    @Override
+    public List<UserAddress> replace(User user, List<UserAddress> add) {
+        repository.deleteByUser(user);
         return this.saveAll(add);
     }
 }

@@ -10,4 +10,5 @@ import org.springframework.util.StringUtils;
 public interface RouteConst {
     String API = "api";
     String USER = API + "/user";
+    String AUTH = API + "/auth";
 }

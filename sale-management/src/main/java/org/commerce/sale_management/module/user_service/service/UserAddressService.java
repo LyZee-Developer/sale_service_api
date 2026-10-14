@@ -1,5 +1,6 @@
 package org.commerce.sale_management.module.user_service.service;
 
+import org.commerce.sale_management.module.user_service.model.User;
 import org.commerce.sale_management.module.user_service.model.UserAddress;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
  */
 public interface UserAddressService {
     List<UserAddress> save(List<UserAddress> add);
+    List<UserAddress> replace(User user, List<UserAddress> add);
 }
