@@ -3,7 +3,7 @@ package org.commerce.sale_management.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.commerce.sale_management.model.User;
+import org.commerce.sale_management.model.UserTesting;
 
 /**
  * @author : Ly LeangSeng
@@ -24,7 +24,7 @@ public class UserDTO {
             this.password = password;
         }
 
-        public view(User user) {
+        public view(UserTesting user) {
             this.username = user.getUsername();
             this.id = user.getId();
             this.password = user.getPassword();
@@ -39,7 +39,7 @@ public class UserDTO {
         private Long id;
         private String username;
 
-        public detail(User user) {
+        public detail(UserTesting user) {
             this.id = user.getId();
             this.username = user.getUsername();
         }

@@ -1,33 +1,31 @@
 package org.commerce.sale_management.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.module.publish_service.model.BasePrimaryIdEntity;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author : Ly LeangSeng
  * @email : lyleangseng712@gmail.com
- * @date : 10/3/2026 7:52 PM
+ * @date : 10/26/2026 10:05 PM
  */
 @Entity
-@Getter
-@Table(name = "app_user")
 @Setter
-@Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BasePrimaryIdEntity  implements Serializable {
-    @Column(nullable = false, unique = true)
+@Table(name = "user_account")
+@Builder
+public class User extends BasePrimaryIdEntity {
+    @Column(unique = true)
+    @NotBlank
     private String username;
+    @NotBlank
+    private String passwordHash;
+    private Integer attempt;
 
-    @Column(nullable = false)
-    private String password;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<UserAddress> userAddressList;
+    @ManyToOne
+    @JoinColumn
+    private Employee employee;
 }

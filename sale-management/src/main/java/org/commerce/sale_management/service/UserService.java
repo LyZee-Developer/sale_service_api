@@ -1,7 +1,7 @@
 package org.commerce.sale_management.service;
 
 import org.commerce.sale_management.dto.UserDTO;
-import org.commerce.sale_management.model.User;
+import org.commerce.sale_management.model.UserTesting;
 import org.commerce.sale_management.user.UserRequest;
 import org.commerce.sale_management.specification.filter.UserRequestFilter;
 import org.springframework.data.domain.Page;
@@ -16,11 +16,11 @@ import java.util.List;
  */
 public interface UserService {
     List<UserDTO.view> index();
-    Page<User> allData(UserRequestFilter filter, Pageable pageable);
-    Page<User> pageUser(Pageable pageable);
+    Page<UserTesting> allData(UserRequestFilter filter, Pageable pageable);
+    Page<UserTesting> pageUser(Pageable pageable);
     String save(UserRequest.save req);
     String update(UserRequest.update req);
     String disabled(Long id);
-    User findById(Long id);
+    UserTesting findById(Long id);
 
 }

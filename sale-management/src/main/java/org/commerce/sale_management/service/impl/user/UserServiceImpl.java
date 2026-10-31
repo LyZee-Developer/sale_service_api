@@ -3,9 +3,9 @@ package org.commerce.sale_management.service.impl.user;
 import jakarta.transaction.Transactional;
 import org.commerce.sale_management.config.RedisCacheConfig;
 import org.commerce.sale_management.dto.UserDTO;
-import org.commerce.sale_management.model.User;
+import org.commerce.sale_management.model.UserTesting;
 import org.commerce.sale_management.model.UserAddress;
-import org.commerce.sale_management.repository.UserRepository;
+import org.commerce.sale_management.repository.UserTestingRepository;
 import org.commerce.sale_management.user.UserRequest;
 import org.commerce.sale_management.service.BaseInternalAppService;
 import org.commerce.sale_management.service.UserAddressService;
@@ -29,24 +29,24 @@ import java.util.Optional;
  * @date : 10/4/2026 2:18 PM
  */
 @Service
-public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepository, UserRequestFilter, UserSpecification> implements UserService {
+public class UserServiceImpl extends BaseInternalAppService<UserTesting, Long, UserTestingRepository, UserRequestFilter, UserSpecification> implements UserService {
 
     @Autowired
     private UserAddressService userAddressService;
 
     @Override
-    public Page<User> pageUser(Pageable pageable) {
+    public Page<UserTesting> pageUser(Pageable pageable) {
         return this.findAll(pageable);
     }
 
     @Override
     @Cacheable(cacheNames = RedisCacheConfig.USER_ID_CACHE, key = "#id")
-    public User findById(Long id) {
-        return this.findOneThrow(id);
+    public UserTesting findById(Long id) {
+        return this.findOneOrThrow(id);
     }
 
     @Override
-    public Page<User> allData(UserRequestFilter filter, Pageable pageable) {
+    public Page<UserTesting> allData(UserRequestFilter filter, Pageable pageable) {
         return this.findAllSpePageFetch(filter, pageable);
     }
 
@@ -58,7 +58,7 @@ public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepo
     @Transactional
     @Override
     public String save(UserRequest.save req) {
-        User user = User.builder()
+        UserTesting user = UserTesting.builder()
                 .username(req.getUsername())
                 .password(req.getPassword())
                 .build();
@@ -84,7 +84,7 @@ public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepo
     @Override
     @CacheEvict(cacheNames = RedisCacheConfig.USER_ID_CACHE, key = "#req.id")
     public String update(UserRequest.update req) {
-        User user = this.findOneThrow(req.getId());
+        UserTesting user = this.findOneOrThrow(req.getId());
         this.save(user);
         return "update success";
     }
@@ -92,7 +92,7 @@ public class UserServiceImpl extends BaseInternalAppService<User, Long, UserRepo
     @Override
     @CacheEvict(cacheNames = RedisCacheConfig.USER_ID_CACHE, key = "#id")
     public String disabled(Long id) {
-        User user = this.findOneThrow(id);
+        UserTesting user = this.findOneOrThrow(id);
         user.setIsActivate(Boolean.FALSE);
         this.update(user);
         return "disabled user!";

@@ -26,5 +26,5 @@ public class UserAddress extends BasePrimaryIdEntity {
 
     @ManyToOne
     @JsonBackReference
-    private User user;
+    private UserTesting user;
 }

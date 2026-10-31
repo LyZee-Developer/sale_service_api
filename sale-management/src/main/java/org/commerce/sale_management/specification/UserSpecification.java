@@ -4,7 +4,7 @@ import ch.qos.logback.core.util.StringUtil;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import org.commerce.sale_management.model.User;
+import org.commerce.sale_management.model.UserTesting;
 import org.commerce.sale_management.specification.filter.UserRequestFilter;
 import org.module.publish_service.specification.BaseInternalSpecification;
 
@@ -13,14 +13,14 @@ import org.module.publish_service.specification.BaseInternalSpecification;
  * @email : lyleangseng712@gmail.com
  * @date : 10/4/2026 3:12 PM
  */
-public class UserSpecification extends BaseInternalSpecification<User, UserRequestFilter> {
+public class UserSpecification extends BaseInternalSpecification<UserTesting, UserRequestFilter> {
 
     public UserSpecification(UserRequestFilter filter) {
         super(filter);
     }
 
     @Override
-    protected void addPredicates(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+    protected void addPredicates(Root<UserTesting> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
         //search
         if(!StringUtil.isNullOrEmpty(queryFilters.getSearch())){
             String search = queryFilters.getSearch().trim();
