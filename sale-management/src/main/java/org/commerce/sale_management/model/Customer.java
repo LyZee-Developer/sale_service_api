@@ -1,5 +1,6 @@
 package org.commerce.sale_management.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -27,12 +28,22 @@ public class Customer extends BasePrimaryIdEntity {
     private String phone;
     private String phone1;
     private Boolean gender;
-    private Boolean email;
+    private String email;
 
     @Enumerated(EnumType.STRING)
     private CustomerConst.Type type;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
+    @JsonIncludeProperties({
+        "code",
+        "firstName",
+        "lastName",
+        "firstNameEn",
+        "lastNameEn",
+        "email",
+        "phone",
+        "phone1",
+    })
     private Employee employee;
 }

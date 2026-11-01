@@ -99,7 +99,7 @@ public abstract class Customer_ extends BasePrimaryIdEntity_ {
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Customer#email}
 	 **/
-	public static volatile SingularAttribute<Customer, Boolean> email;
+	public static volatile SingularAttribute<Customer, String> email;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Customer#type}
