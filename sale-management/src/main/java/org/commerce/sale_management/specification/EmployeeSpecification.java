@@ -5,8 +5,10 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.commerce.sale_management.model.Employee;
+import org.commerce.sale_management.model.Employee_;
 import org.commerce.sale_management.specification.filter.EmployeeRequestFilter;
 import org.module.publish_service.specification.BaseInternalSpecification;
+import org.module.publish_service.util.SpecificationUtil;
 
 /**
  * @author : Ly LeangSeng
@@ -20,13 +22,20 @@ public class EmployeeSpecification extends BaseInternalSpecification<Employee, E
 
     @Override
     protected void addPredicates(Root<Employee> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-        //search
+        SpecificationUtil<Employee> spec = new SpecificationUtil<>(root, query, cb);
+
         if (!StringUtil.isNullOrEmpty(queryFilters.getSearch())) {
-            String search = queryFilters.getSearch().trim();
-            predicates.add(cb.or(
-                    cb.like(cb.lower(root.get("username")), "%" + search.toLowerCase() + "%"),
-                    cb.like(cb.lower(root.get("password")), "%" + search.toLowerCase() + "%")
-            ));
+            String search = queryFilters.getSearch();
+            predicates.add(
+                cb.or(
+                    spec.matchText(Employee_.CODE, search),
+                    spec.matchText(Employee_.PHONE, search),
+                    spec.matchText(Employee_.PHONE1, search),
+                    spec.search(Employee_.EMAIL, search),
+                    spec.concatSearch(Employee_.FIRST_NAME_EN, Employee_.LAST_NAME_EN, search),
+                    spec.concatSearch(Employee_.FIRST_NAME_KH, Employee_.FIRST_NAME_KH, search)
+                )
+            );
         }
     }
 }

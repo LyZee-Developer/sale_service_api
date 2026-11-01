@@ -3,24 +3,19 @@ package org.commerce.sale_management.controller;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import org.commerce.sale_management.constant.RouteConst;
-import org.commerce.sale_management.dto.EmployeeViewDTO;
+import org.commerce.sale_management.dto.EmployeeDTO;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.service.EmployeeService;
 import org.commerce.sale_management.specification.filter.EmployeeRequestFilter;
 import org.commerce.sale_management.vo.employee.EmployeeRequest;
 import org.module.publish_service.model.BaseEntity_;
 import org.module.publish_service.response.ApiResponse;
-import org.module.publish_service.util.GenerateUtil;
-import org.module.publish_service.util.SensitiveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
-import java.util.Map;
 
 /**
  * @author : Ly LeangSeng
@@ -39,12 +34,12 @@ public class EmployeeController {
 
     @GetMapping
     public ResponseEntity<Object> index(@ModelAttribute EmployeeRequestFilter filter, @PageableDefault(sort = BaseEntity_.CREATED_AT, direction = Sort.Direction.DESC) Pageable pageable) {
-        return ResponseEntity.ok(apiResponse.success(employeeService.getAllOrView(filter, pageable, EmployeeViewDTO.class)));
+        return ResponseEntity.ok(apiResponse.success(employeeService.getAllOrView(filter, pageable, EmployeeDTO.class)));
     }
 
     @PostMapping
     public ResponseEntity<Object> save(@Valid @RequestBody EmployeeRequest request) {
-        EmployeeViewDTO emp = employeeService.save(request);
+        EmployeeDTO emp = employeeService.save(request);
         return ResponseEntity.ok(apiResponse.success(emp));
     }
 

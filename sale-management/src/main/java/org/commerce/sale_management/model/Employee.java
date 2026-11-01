@@ -10,7 +10,6 @@ import lombok.*;
 import org.commerce.sale_management.constant.EmployeeConst;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -62,6 +61,7 @@ public class Employee extends BasePrimaryIdEntity {
     @OneToMany(mappedBy = Employee_.LINE_MANAGER, orphanRemoval = true,fetch = FetchType.LAZY)
     @JsonManagedReference
     @JsonIncludeProperties({
+        Employee_.ID,
         Employee_.FIRST_NAME_EN,
         Employee_.LAST_NAME_EN,
         Employee_.LAST_NAME_KH,
@@ -70,5 +70,5 @@ public class Employee extends BasePrimaryIdEntity {
         Employee_.CODE,
         Employee_.GENDER
     })
-    private List<Employee> employees;
+    private List<Employee> subordinate;
 }

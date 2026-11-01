@@ -11,4 +11,7 @@ public interface RouteConst {
     String API = "api";
     String USER = API + "/user";
     String EMPLOYEE = API + "/employee";
+    String DATA_REF = API + "/data-ref";
+    String USER_ACCOUNT = API + "/user-account";
+    String DINNING_TABLE = API + "/dinning-table";
 }

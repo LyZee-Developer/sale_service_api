@@ -108,9 +108,9 @@ public abstract class Employee_ extends BasePrimaryIdEntity_ {
 	public static final String LINE_MANAGER = "lineManager";
 	
 	/**
-	 * @see #employees
+	 * @see #subordinate
 	 **/
-	public static final String EMPLOYEES = "employees";
+	public static final String SUBORDINATE = "subordinate";
 
 	
 	/**
@@ -209,9 +209,9 @@ public abstract class Employee_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<Employee, Employee> lineManager;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#employees}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#subordinate}
 	 **/
-	public static volatile ListAttribute<Employee, Employee> employees;
+	public static volatile ListAttribute<Employee, Employee> subordinate;
 
 }
 

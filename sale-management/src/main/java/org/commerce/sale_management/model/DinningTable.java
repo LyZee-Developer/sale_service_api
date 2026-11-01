@@ -1,5 +1,6 @@
 package org.commerce.sale_management.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -21,6 +22,7 @@ import org.module.publish_service.model.BasePrimaryIdEntity;
 @NoArgsConstructor
 public class DinningTable extends BasePrimaryIdEntity {
     @NotBlank
+    @Column(unique = true)
     private String tableName;
 
     @NotNull

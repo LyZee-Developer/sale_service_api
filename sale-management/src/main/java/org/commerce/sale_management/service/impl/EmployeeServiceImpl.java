@@ -2,7 +2,7 @@ package org.commerce.sale_management.service.impl;
 
 import jakarta.transaction.Transactional;
 import org.commerce.sale_management.constant.EmployeeConst;
-import org.commerce.sale_management.dto.EmployeeViewDTO;
+import org.commerce.sale_management.dto.EmployeeDTO;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.repository.EmployeeRepository;
 import org.commerce.sale_management.service.EmployeeService;
@@ -44,28 +44,28 @@ public class EmployeeServiceImpl extends BaseInternalServiceImpl<Employee, Long,
     private EnumUtil enumUtil;
 
     @Override
-    public List<EmployeeViewDTO> list(EmployeeRequestFilter filter, Pageable pageable) {
-        return this.findAllView(EmployeeViewDTO.class);
+    public List<EmployeeDTO> list(EmployeeRequestFilter filter, Pageable pageable) {
+        return this.findAllView(EmployeeDTO.class);
     }
 
     @Override
     @Transactional
-    public EmployeeViewDTO save(EmployeeRequest request) {
+    public EmployeeDTO save(EmployeeRequest request) {
         Employee emp = saveInfo(new Employee(), request);
         save(emp);
-        return new EmployeeViewDTO(emp);
+        return new EmployeeDTO(emp);
     }
 
     @Override
-    public EmployeeViewDTO getOne(Long id) {
-        return this.findOne(id).map(EmployeeViewDTO::new).orElse(null);
+    public EmployeeDTO getOne(Long id) {
+        return this.findOne(id).map(EmployeeDTO::new).orElse(null);
     }
 
 
     @Override
     public Employee update(Long id, EmployeeRequest request) {
         Employee emp = this.findOneOrThrow(id);
-        return saveInfo(emp, request);
+        return update(saveInfo(emp, request));
     }
 
     public Employee saveInfo(Employee emp, EmployeeRequest request) {

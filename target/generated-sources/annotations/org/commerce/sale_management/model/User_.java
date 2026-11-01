@@ -4,6 +4,7 @@ import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
+import java.time.LocalDateTime;
 import org.module.publish_service.model.BasePrimaryIdEntity_;
 
 /**
@@ -30,6 +31,16 @@ public abstract class User_ extends BasePrimaryIdEntity_ {
 	public static final String ATTEMPT = "attempt";
 	
 	/**
+	 * @see #resetAt
+	 **/
+	public static final String RESET_AT = "resetAt";
+	
+	/**
+	 * @see #isAllowResetPw
+	 **/
+	public static final String IS_ALLOW_RESET_PW = "isAllowResetPw";
+	
+	/**
 	 * @see #employee
 	 **/
 	public static final String EMPLOYEE = "employee";
@@ -54,6 +65,16 @@ public abstract class User_ extends BasePrimaryIdEntity_ {
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.User#attempt}
 	 **/
 	public static volatile SingularAttribute<User, Integer> attempt;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.User#resetAt}
+	 **/
+	public static volatile SingularAttribute<User, LocalDateTime> resetAt;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.User#isAllowResetPw}
+	 **/
+	public static volatile SingularAttribute<User, Boolean> isAllowResetPw;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.User#employee}
