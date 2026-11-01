@@ -33,7 +33,7 @@ public class EmployeeSpecification extends BaseInternalSpecification<Employee, E
                     spec.matchText(Employee_.PHONE1, search),
                     spec.search(Employee_.EMAIL, search),
                     spec.concatSearch(Employee_.FIRST_NAME_EN, Employee_.LAST_NAME_EN, search),
-                    spec.concatSearch(Employee_.FIRST_NAME_KH, Employee_.FIRST_NAME_KH, search)
+                    spec.concatSearch(Employee_.FIRST_NAME, Employee_.FIRST_NAME, search)
                 )
             );
         }

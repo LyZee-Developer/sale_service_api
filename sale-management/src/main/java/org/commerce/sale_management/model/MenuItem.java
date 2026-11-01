@@ -22,12 +22,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class MenuItem extends BasePrimaryIdEntity {
     @NotBlank
-    private String nameKh;
+    private String name;
     private String nameEn;
     private Boolean isAvailable;
     private BigDecimal price;
     private Double discount;
-    private String descriptionEn;
+    private String description;
     private String descriptionKh;
 
     @ManyToOne

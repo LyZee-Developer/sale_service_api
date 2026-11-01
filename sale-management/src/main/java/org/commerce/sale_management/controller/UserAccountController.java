@@ -6,10 +6,15 @@ import org.commerce.sale_management.constant.RouteConst;
 import org.commerce.sale_management.dto.UserAccountDTO;
 import org.commerce.sale_management.model.User;
 import org.commerce.sale_management.service.UserAccountService;
+import org.commerce.sale_management.specification.filter.UserAccountRequestFilter;
 import org.commerce.sale_management.vo.userAccount.UserAccount;
+import org.module.publish_service.model.BaseEntity_;
 import org.module.publish_service.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +32,11 @@ public class UserAccountController {
 
     @Autowired
     private ApiResponse apiResponse;
+
+    @GetMapping
+    public ResponseEntity<Object> index(@ModelAttribute UserAccountRequestFilter filter, @PageableDefault(sort = BaseEntity_.CREATED_AT, direction = Sort.Direction.DESC) Pageable pageable) {
+        return ResponseEntity.ok(apiResponse.success(userAccountService.getAllOrView(filter, pageable, UserAccountDTO.class)));
+    }
 
     @GetMapping("/me/{id}")
     public ResponseEntity<Object> getOne(@PathVariable @Positive Long id) {

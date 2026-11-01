@@ -3,6 +3,7 @@ package org.commerce.sale_management.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.commerce.sale_management.constant.EmployeeConst;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.model.User;
 
@@ -29,10 +30,10 @@ public class UserAccountDTO {
     public UserAccountDTO(User user) {
         Employee employee = user.getEmployee();
         this.employeeCode = employee.getCode();
-        this.fullName = "%s %s".formatted(employee.getFirstNameKh(), employee.getLastNameKh());
-        this.fullNameEn = "%s %s".formatted(employee.getFirstNameEn(), employee.getLastNameKh());
+        this.fullName = "%s %s".formatted(employee.getFirstName(), employee.getLastName());
+        this.fullNameEn = "%s %s".formatted(employee.getFirstNameEn(), employee.getLastNameEn());
         this.email = employee.getEmail();
-        this.status = employee.getStatus().toString();
+        this.status = employee.getStatus().getDescription();
         this.id = employee.getId();
         this.password = user.getPasswordHash();
         this.username = user.getUsername();

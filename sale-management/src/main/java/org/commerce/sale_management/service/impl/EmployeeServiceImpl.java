@@ -79,8 +79,8 @@ public class EmployeeServiceImpl extends BaseInternalServiceImpl<Employee, Long,
         Employee lineManager = this.findOne(request.getLineManager()).orElse(null);
 
         emp.setCode(generateCode);
-        emp.setFirstNameKh(request.getFirstNameKh());
-        emp.setLastNameKh(request.getLastNameKh());
+        emp.setFirstName(request.getFirstNameKh());
+        emp.setLastName(request.getLastNameKh());
         emp.setFirstNameEn(request.getFirstNameEn());
         emp.setLastNameEn(request.getLastNameEn());
         emp.setEmail(request.getEmail());

@@ -22,10 +22,10 @@ import java.util.List;
 @AllArgsConstructor
 public class MenuCategory extends BasePrimaryIdEntity {
     @NotBlank
-    private String nameKh;
+    private String name;
     private String nameEn;
     @NotBlank
-    private String descriptionKh;
+    private String description;
     private String descriptionEn;
 
     @OneToMany(mappedBy = MenuItem_.CATEGORY, orphanRemoval = true)

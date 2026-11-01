@@ -66,11 +66,11 @@
             <scope>test</scope>
         </dependency>
         <!-- for generate entity with _.YOUR_PROPERTIES-->
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-processor</artifactId>
-            <scope>provided</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.hibernate.orm</groupId>-->
+<!--            <artifactId>hibernate-processor</artifactId>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
 
         <!-- Flyway migration engine (Boot 4 needs the starter for auto-configuration) -->
         <dependency>

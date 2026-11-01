@@ -24,9 +24,9 @@ import java.util.List;
 public class DataRef extends BasePrimaryIdEntity {
     private String code;
     @NotBlank
-    private String nameKh;
+    private String name;
     private String nameEn;
-    private String descriptionKh;
+    private String description;
     private String descriptionEn;
     private String value;
     private Integer level;

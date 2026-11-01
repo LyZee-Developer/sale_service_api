@@ -21,9 +21,9 @@ public abstract class DataRef_ extends BasePrimaryIdEntity_ {
 	public static final String CODE = "code";
 	
 	/**
-	 * @see #nameKh
+	 * @see #name
 	 **/
-	public static final String NAME_KH = "nameKh";
+	public static final String NAME = "name";
 	
 	/**
 	 * @see #nameEn
@@ -31,9 +31,9 @@ public abstract class DataRef_ extends BasePrimaryIdEntity_ {
 	public static final String NAME_EN = "nameEn";
 	
 	/**
-	 * @see #descriptionKh
+	 * @see #description
 	 **/
-	public static final String DESCRIPTION_KH = "descriptionKh";
+	public static final String DESCRIPTION = "description";
 	
 	/**
 	 * @see #descriptionEn
@@ -77,9 +77,9 @@ public abstract class DataRef_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<DataRef, String> code;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DataRef#nameKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DataRef#name}
 	 **/
-	public static volatile SingularAttribute<DataRef, String> nameKh;
+	public static volatile SingularAttribute<DataRef, String> name;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DataRef#nameEn}
@@ -87,9 +87,9 @@ public abstract class DataRef_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<DataRef, String> nameEn;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DataRef#descriptionKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DataRef#description}
 	 **/
-	public static volatile SingularAttribute<DataRef, String> descriptionKh;
+	public static volatile SingularAttribute<DataRef, String> description;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DataRef#descriptionEn}

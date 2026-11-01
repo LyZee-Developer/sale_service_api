@@ -23,14 +23,14 @@ public abstract class Employee_ extends BasePrimaryIdEntity_ {
 	public static final String CODE = "code";
 	
 	/**
-	 * @see #firstNameKh
+	 * @see #firstName
 	 **/
-	public static final String FIRST_NAME_KH = "firstNameKh";
+	public static final String FIRST_NAME = "firstName";
 	
 	/**
-	 * @see #lastNameKh
+	 * @see #lastName
 	 **/
-	public static final String LAST_NAME_KH = "lastNameKh";
+	public static final String LAST_NAME = "lastName";
 	
 	/**
 	 * @see #firstNameEn
@@ -124,14 +124,14 @@ public abstract class Employee_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<Employee, String> code;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#firstNameKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#firstName}
 	 **/
-	public static volatile SingularAttribute<Employee, String> firstNameKh;
+	public static volatile SingularAttribute<Employee, String> firstName;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#lastNameKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#lastName}
 	 **/
-	public static volatile SingularAttribute<Employee, String> lastNameKh;
+	public static volatile SingularAttribute<Employee, String> lastName;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Employee#firstNameEn}

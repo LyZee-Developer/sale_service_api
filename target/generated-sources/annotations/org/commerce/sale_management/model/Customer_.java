@@ -21,9 +21,9 @@ public abstract class Customer_ extends BasePrimaryIdEntity_ {
 	public static final String CODE = "code";
 	
 	/**
-	 * @see #fullNameKh
+	 * @see #fullName
 	 **/
-	public static final String FULL_NAME_KH = "fullNameKh";
+	public static final String FULL_NAME = "fullName";
 	
 	/**
 	 * @see #fullNameEn
@@ -72,9 +72,9 @@ public abstract class Customer_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<Customer, String> code;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Customer#fullNameKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Customer#fullName}
 	 **/
-	public static volatile SingularAttribute<Customer, String> fullNameKh;
+	public static volatile SingularAttribute<Customer, String> fullName;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Customer#fullNameEn}

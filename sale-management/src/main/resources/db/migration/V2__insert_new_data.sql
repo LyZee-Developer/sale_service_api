@@ -1,6 +1,6 @@
 INSERT INTO public.data_ref
-(audit_remark, created_at, created_by, is_activate, "level", order_number, code, parent_code, name_en, name_kh,
- value, description_en, description_kh)
+(audit_remark, created_at, created_by, is_activate, "level", order_number, code, parent_code, name_en, name,
+ value, description_en, description)
 VALUES
     -- Payment Status
     ('', NOW(), 'System', true, 1, 1, 'PAYMENT_STATUS', NULL, 'Payment Status', 'ស្ថានភាពបង់ប្រាក់', NULL, NULL, NULL),

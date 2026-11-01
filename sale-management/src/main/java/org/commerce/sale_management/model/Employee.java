@@ -28,14 +28,15 @@ public class Employee extends BasePrimaryIdEntity {
     @Column(unique = true, nullable = false)
     private String code;
     @NotBlank(message = "Field first name kh is required.")
-    private String firstNameKh;
+    private String firstName;
     @NotBlank(message = "Field last name kh is required.")
-    private String lastNameKh;
+    private String lastName;
     private String firstNameEn;
     private String lastNameEn;
     private String email;
     private String phone;
     private String phone1;
+    @NotNull
     private Boolean gender; //-- 1 male, 0 female
     @NotNull
     private LocalDate dob; //-- date of birth
@@ -57,18 +58,17 @@ public class Employee extends BasePrimaryIdEntity {
     @JoinColumn(name = "line_manager_id")
     @JsonBackReference
     private Employee lineManager;
-
-    @OneToMany(mappedBy = Employee_.LINE_MANAGER, orphanRemoval = true,fetch = FetchType.LAZY)
-    @JsonManagedReference
     @JsonIncludeProperties({
         Employee_.ID,
         Employee_.FIRST_NAME_EN,
         Employee_.LAST_NAME_EN,
-        Employee_.LAST_NAME_KH,
-        Employee_.LAST_NAME_KH,
+        Employee_.LAST_NAME,
+        Employee_.LAST_NAME,
         Employee_.EMAIL,
         Employee_.CODE,
         Employee_.GENDER
     })
+    @OneToMany(mappedBy = Employee_.LINE_MANAGER, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Employee> subordinate;
 }

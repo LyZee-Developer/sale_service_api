@@ -33,7 +33,7 @@ public class User extends BasePrimaryIdEntity {
     private LocalDateTime resetAt;
     private Boolean isAllowResetPw = Boolean.FALSE;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Employee employee;
 

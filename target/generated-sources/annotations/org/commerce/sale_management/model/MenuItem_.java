@@ -16,9 +16,9 @@ public abstract class MenuItem_ extends BasePrimaryIdEntity_ {
 
 	
 	/**
-	 * @see #nameKh
+	 * @see #name
 	 **/
-	public static final String NAME_KH = "nameKh";
+	public static final String NAME = "name";
 	
 	/**
 	 * @see #nameEn
@@ -41,9 +41,9 @@ public abstract class MenuItem_ extends BasePrimaryIdEntity_ {
 	public static final String DISCOUNT = "discount";
 	
 	/**
-	 * @see #descriptionEn
+	 * @see #description
 	 **/
-	public static final String DESCRIPTION_EN = "descriptionEn";
+	public static final String DESCRIPTION = "description";
 	
 	/**
 	 * @see #descriptionKh
@@ -62,9 +62,9 @@ public abstract class MenuItem_ extends BasePrimaryIdEntity_ {
 	public static volatile EntityType<MenuItem> class_;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#nameKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#name}
 	 **/
-	public static volatile SingularAttribute<MenuItem, String> nameKh;
+	public static volatile SingularAttribute<MenuItem, String> name;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#nameEn}
@@ -87,9 +87,9 @@ public abstract class MenuItem_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<MenuItem, Double> discount;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#descriptionEn}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#description}
 	 **/
-	public static volatile SingularAttribute<MenuItem, String> descriptionEn;
+	public static volatile SingularAttribute<MenuItem, String> description;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#descriptionKh}

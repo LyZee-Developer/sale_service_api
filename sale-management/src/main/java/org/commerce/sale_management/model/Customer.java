@@ -21,7 +21,7 @@ public class Customer extends BasePrimaryIdEntity {
     @NotBlank
     private String code;
     @NotBlank
-    private String fullNameKh;
+    private String fullName;
     private String fullNameEn;
     @NotBlank
     private String phone;

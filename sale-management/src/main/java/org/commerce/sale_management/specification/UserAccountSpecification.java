@@ -35,8 +35,8 @@ public class UserAccountSpecification extends BaseInternalSpecification<User, Us
                     cb.or(
                         spec.matchText(User_.USERNAME, search),
                         spec.search(User_.USERNAME, search),
-                        cb.like(cb.lower(cb.concat(cb.concat(empJoin.get(Employee_.FIRST_NAME_KH), " "), empJoin.get(Employee_.LAST_NAME_KH))), "%" + search.toLowerCase() + "%"),
-                        cb.like(cb.lower(cb.concat(cb.concat(empJoin.get(Employee_.LAST_NAME_EN), " "), empJoin.get(Employee_.LAST_NAME_EN))), "%" + search.toLowerCase() + "%")
+                        cb.like(cb.lower(cb.concat(cb.concat(empJoin.get(Employee_.FIRST_NAME), " "), empJoin.get(Employee_.LAST_NAME))), "%" + search.toLowerCase() + "%"),
+                        cb.like(cb.lower(cb.concat(cb.concat(empJoin.get(Employee_.FIRST_NAME_EN), " "), empJoin.get(Employee_.LAST_NAME_EN))), "%" + search.toLowerCase() + "%")
                     )
                 )
             );
