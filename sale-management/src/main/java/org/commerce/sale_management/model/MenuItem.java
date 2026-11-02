@@ -28,7 +28,7 @@ public class MenuItem extends BasePrimaryIdEntity {
     private BigDecimal price;
     private Double discount;
     private String description;
-    private String descriptionKh;
+    private String descriptionEn;
 
     @ManyToOne
     @JsonBackReference
