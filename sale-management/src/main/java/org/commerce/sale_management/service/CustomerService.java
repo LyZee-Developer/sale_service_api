@@ -5,6 +5,8 @@ import org.commerce.sale_management.specification.filter.CustomerRequestFilter;
 import org.commerce.sale_management.vo.customer.CustomerRequest;
 import org.module.publish_service.service.BaseInternalService;
 
+import java.util.Optional;
+
 /**
  * @author : Ly LeangSeng
  * @email : lyleangseng712@gmail.com
@@ -16,4 +18,6 @@ public interface CustomerService extends BaseInternalService<Customer, Long, Cus
     Customer update(CustomerRequest request);
 
     String changeStatus(Long id, boolean isEnabled);
+
+    Optional<Customer> getCustomerCode(String code);
 }

@@ -2,7 +2,7 @@ package org.commerce.sale_management.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
-import org.commerce.sale_management.constant.RouteConst;
+import org.commerce.sale_management.constant.ApiUrlConstant;
 import org.commerce.sale_management.dto.CustomerDTO;
 import org.commerce.sale_management.model.Customer;
 import org.commerce.sale_management.service.CustomerService;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * @date : 11/1/2026 7:25 PM
  */
 @RestController
-@RequestMapping(RouteConst.CUSTOMER)
+@RequestMapping(ApiUrlConstant.CUSTOMER)
 public class CustomerController {
 
     @Autowired

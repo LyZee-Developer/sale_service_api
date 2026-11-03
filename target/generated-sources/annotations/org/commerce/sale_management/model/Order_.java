@@ -6,8 +6,8 @@ import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import java.time.LocalDateTime;
-import org.commerce.sale_management.constant.OrderConst.PaymentStatus;
-import org.commerce.sale_management.constant.OrderConst.Status;
+import org.commerce.sale_management.constant.OrderConstant.PaymentStatus;
+import org.commerce.sale_management.constant.OrderConstant.Status;
 import org.module.publish_service.model.BasePrimaryIdEntity_;
 
 /**

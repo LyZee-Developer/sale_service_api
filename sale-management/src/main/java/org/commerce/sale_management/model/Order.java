@@ -3,9 +3,12 @@ package org.commerce.sale_management.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.commerce.sale_management.constant.OrderConst;
+import org.commerce.sale_management.constant.CustomerConstant;
+import org.commerce.sale_management.constant.OrderConstant;
+import org.hibernate.annotations.Audited;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
 import java.time.LocalDateTime;
@@ -24,36 +27,41 @@ import java.util.List;
 @Builder
 @Setter
 @Getter
+@Audited
 public class Order extends BasePrimaryIdEntity {
     @NotBlank
     private String orderNumber;
 
     @Enumerated(EnumType.STRING)
-    private OrderConst.Status status;
+    private OrderConstant.Status status;
 
     @Enumerated(EnumType.STRING)
-    private OrderConst.PaymentStatus paymentStatus;
+    private CustomerConstant.Type customerType;
+
+    @Enumerated(EnumType.STRING)
+    private OrderConstant.PaymentStatus paymentStatus;
 
     @NotNull
-    LocalDateTime orderDate;
+    private LocalDateTime orderDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private DinningTable table;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", referencedColumnName = "code")
+    @JoinColumn(referencedColumnName = "code")
     private Customer customer;
 
-    @OneToMany(mappedBy = OrderItem_.ORDER, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
+    @NotEmpty
     private List<OrderItem> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = OrderItem_.ORDER, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<OrderHistory> orderHistories = new ArrayList<>();
+//    @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    private List<OrderHistory> orderHistories = new ArrayList<>();
 
-    @OneToMany(mappedBy = OrderItem_.ORDER, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<KitchenTicket> kitchenTickets;
 

@@ -1,9 +1,6 @@
 package org.commerce.sale_management.service.impl.customer;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import org.apache.logging.log4j.util.Strings;
-import org.commerce.sale_management.constant.CustomerConst;
+import org.commerce.sale_management.constant.CustomerConstant;
 import org.commerce.sale_management.model.Customer;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.repository.CustomerRepository;
@@ -18,12 +15,10 @@ import org.module.publish_service.response.ApiResponse;
 import org.module.publish_service.service.impl.BaseInternalServiceImpl;
 import org.module.publish_service.util.EnumUtil;
 import org.module.publish_service.util.GenerateUtil;
-import org.module.publish_service.util.StringUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -58,7 +53,7 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
     }
 
     private Customer mpaInfo(CustomerRequest req) {
-        enumUtil.validate(CustomerConst.Type.class, req.getType());
+        enumUtil.validate(CustomerConstant.Type.class, req.getType());
         Employee employee = checkTypeOrGetEmployee(req);
         String code = generateCode();
         Customer customer = getCustomer(req.getId());
@@ -72,7 +67,7 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
         customer.setPhone1(req.getPhone1());
         customer.setGender(req.getGender());
         customer.setEmail(req.getEmail());
-        customer.setType(CustomerConst.Type.valueOf(req.getType()));
+        customer.setType(CustomerConstant.Type.valueOf(req.getType()));
         customer.setEmployee(employee);
         return customer;
     }
@@ -95,7 +90,7 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
     }
 
     private Employee checkTypeOrGetEmployee(CustomerRequest req) {
-        boolean isGeneral = CustomerConst.Type.GENERAL.toString().equals(req.getType());
+        boolean isGeneral = CustomerConstant.Type.GENERAL.toString().equals(req.getType());
         if (isGeneral) {
             return null;
         }
@@ -120,6 +115,11 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
         customer.setIsActivate(isEnabled);
         update(customer);
         return "%s customer success.".formatted(isEnabled ? "Enabled" : "Disabled");
+    }
+
+    @Override
+    public Optional<Customer> getCustomerCode(String code) {
+        return repository.findByCodeAndIsActivateTrue(code);
     }
 
     @Override

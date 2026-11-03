@@ -6,7 +6,7 @@ import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import java.time.LocalDateTime;
-import org.commerce.sale_management.constant.KitchenTicketConst.Status;
+import org.commerce.sale_management.constant.KitchenTicketConstant.Status;
 
 /**
  * Static metamodel for {@link org.commerce.sale_management.model.KitchenTicket}

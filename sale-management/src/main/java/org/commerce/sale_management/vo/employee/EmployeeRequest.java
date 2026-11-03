@@ -3,7 +3,7 @@ package org.commerce.sale_management.vo.employee;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.commerce.sale_management.constant.EmployeeConst;
+import org.commerce.sale_management.constant.EmployeeConstant;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -40,7 +40,7 @@ public class EmployeeRequest {
     @NotBlank(message = "Identity-card ID is required.")
     private String nID;
     private BigDecimal salary;
-    private String status = EmployeeConst.Status.ACTIVE.toString();
+    private String status = EmployeeConstant.Status.ACTIVE.toString();
     private Long departmentId;
     private Long positionId;
     private Long lineManager;

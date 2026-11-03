@@ -3,6 +3,7 @@ package org.commerce.sale_management.vo.menuCategory;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+import org.commerce.sale_management.constant.RequiredFieldConstant;
 
 /**
  * @author : Ly LeangSeng
@@ -13,7 +14,7 @@ import lombok.Setter;
 @Getter
 public class MenuCategoryRequest {
     private Long id;
-    @NotBlank(message = "name is required.")
+    @NotBlank(message = RequiredFieldConstant.NAME)
     private String name;
     private String nameEn;
     private String description;

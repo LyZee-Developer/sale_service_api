@@ -18,4 +18,6 @@ public interface MenuCategoryService extends BaseInternalService<MenuCategory, L
     String updateStatus(Long id, boolean isActive);
 
     MenuCategory getMenuCategoryOrThrow(Long id);
+
+
 }

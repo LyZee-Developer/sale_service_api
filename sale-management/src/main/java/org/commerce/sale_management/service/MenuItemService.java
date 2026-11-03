@@ -1,9 +1,12 @@
 package org.commerce.sale_management.service;
 
+import org.commerce.sale_management.dto.MenuItemDTO;
 import org.commerce.sale_management.model.MenuItem;
 import org.commerce.sale_management.specification.filter.MenuItemRequestFilter;
 import org.commerce.sale_management.vo.menuItem.MenuItemRequest;
 import org.module.publish_service.service.BaseInternalService;
+
+import java.util.List;
 
 /**
  * @author : Ly LeangSeng
@@ -16,4 +19,8 @@ public interface MenuItemService extends BaseInternalService<MenuItem, Long, Men
     MenuItem update(MenuItemRequest data);
 
     String updateStatus(Long id, boolean isActive);
+
+    String changeItemStatusAvailable(Long id, boolean isAvailable);
+
+    List<MenuItemDTO> getItemByCategoryId(Long categoryId);
 }

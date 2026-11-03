@@ -6,7 +6,7 @@ import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import java.time.LocalDate;
-import org.commerce.sale_management.constant.EmployeeConst.Status;
+import org.commerce.sale_management.constant.EmployeeConstant.Status;
 import org.module.publish_service.model.BasePrimaryIdEntity_;
 
 /**

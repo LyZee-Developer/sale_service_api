@@ -46,9 +46,9 @@ public abstract class MenuItem_ extends BasePrimaryIdEntity_ {
 	public static final String DESCRIPTION = "description";
 	
 	/**
-	 * @see #descriptionKh
+	 * @see #descriptionEn
 	 **/
-	public static final String DESCRIPTION_KH = "descriptionKh";
+	public static final String DESCRIPTION_EN = "descriptionEn";
 	
 	/**
 	 * @see #category
@@ -92,9 +92,9 @@ public abstract class MenuItem_ extends BasePrimaryIdEntity_ {
 	public static volatile SingularAttribute<MenuItem, String> description;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#descriptionKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#descriptionEn}
 	 **/
-	public static volatile SingularAttribute<MenuItem, String> descriptionKh;
+	public static volatile SingularAttribute<MenuItem, String> descriptionEn;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.MenuItem#category}

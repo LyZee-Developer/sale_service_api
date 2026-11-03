@@ -2,16 +2,11 @@ package org.commerce.sale_management.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
-import org.commerce.sale_management.constant.RouteConst;
-import org.commerce.sale_management.dto.DinningTableDTO;
+import org.commerce.sale_management.constant.ApiUrlConstant;
 import org.commerce.sale_management.dto.MenuCategoryDTO;
-import org.commerce.sale_management.model.DinningTable;
 import org.commerce.sale_management.model.MenuCategory;
-import org.commerce.sale_management.service.DinningTableService;
 import org.commerce.sale_management.service.MenuCategoryService;
-import org.commerce.sale_management.specification.filter.DinningTableRequestFilter;
 import org.commerce.sale_management.specification.filter.MenuCategoryRequestFilter;
-import org.commerce.sale_management.vo.dinning.DinningTableRequest;
 import org.commerce.sale_management.vo.menuCategory.MenuCategoryRequest;
 import org.module.publish_service.model.BaseEntity_;
 import org.module.publish_service.response.ApiResponse;
@@ -29,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * @date : 11/2/2026 6:02 AM
  */
 @RestController
-@RequestMapping(RouteConst.MENU_CATEGORY)
+@RequestMapping(ApiUrlConstant.MENU_CATEGORY)
 public class MenuCategoryController {
     @Autowired
     private MenuCategoryService menuCategoryService;

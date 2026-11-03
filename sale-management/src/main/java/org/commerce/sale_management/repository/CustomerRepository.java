@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface CustomerRepository extends BaseCombineRepositorySpecification<Customer, Long> {
     boolean existsByCode(String code);
     boolean existsByEmployeeId(Long id);
+    Optional<Customer> findByCodeAndIsActivateTrue(String code);
 }

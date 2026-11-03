@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.commerce.sale_management.constant.KitchenTicketConst;
+import org.commerce.sale_management.constant.KitchenTicketConstant;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,15 +28,18 @@ public class KitchenTicket {
 
     @NotBlank
     private String tickerNumber;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Order order;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private DinningTable table;
+
     @NotNull
     private LocalDateTime sentAt;
-    @NotNull
+
     private LocalDateTime printedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,9 +47,10 @@ public class KitchenTicket {
     private Employee employee;
 
     @Enumerated(EnumType.STRING)
-    private KitchenTicketConst.Status status;
+    private KitchenTicketConstant.Status status;
 
-    @OneToMany(mappedBy = KitchenTicketHistory_.ID, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "kitchenTicket", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
+    @OrderBy("id desc")
     private List<KitchenTicketHistory> kitchenTicketsHistories;
 }

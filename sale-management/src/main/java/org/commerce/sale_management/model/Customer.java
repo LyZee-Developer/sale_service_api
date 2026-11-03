@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.commerce.sale_management.constant.CustomerConst;
+import org.commerce.sale_management.constant.CustomerConstant;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
 /**
@@ -31,7 +31,7 @@ public class Customer extends BasePrimaryIdEntity {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private CustomerConst.Type type;
+    private CustomerConstant.Type type;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")

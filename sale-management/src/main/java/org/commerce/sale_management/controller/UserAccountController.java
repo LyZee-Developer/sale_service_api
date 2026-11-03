@@ -2,7 +2,7 @@ package org.commerce.sale_management.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
-import org.commerce.sale_management.constant.RouteConst;
+import org.commerce.sale_management.constant.ApiUrlConstant;
 import org.commerce.sale_management.dto.UserAccountDTO;
 import org.commerce.sale_management.model.User;
 import org.commerce.sale_management.service.UserAccountService;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * @date : 10/31/2026 10:09 PM
  */
 @RestController
-@RequestMapping(RouteConst.USER_ACCOUNT)
+@RequestMapping(ApiUrlConstant.USER_ACCOUNT)
 public class UserAccountController {
 
     @Autowired

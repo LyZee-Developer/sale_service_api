@@ -1,6 +1,6 @@
 package org.commerce.sale_management.controller;
 
-import org.commerce.sale_management.constant.RouteConst;
+import org.commerce.sale_management.constant.ApiUrlConstant;
 import org.commerce.sale_management.user.UserRequest;
 import org.commerce.sale_management.service.UserService;
 import org.commerce.sale_management.specification.filter.UserRequestFilter;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @date : 10/3/2026 6:25 PM
  */
 @RestController
-@RequestMapping(RouteConst.USER)
+@RequestMapping(ApiUrlConstant.USER)
 public class UserTestingController {
     @Autowired
     private UserService userService;

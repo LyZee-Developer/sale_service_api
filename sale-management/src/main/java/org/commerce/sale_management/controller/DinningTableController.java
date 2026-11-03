@@ -2,7 +2,7 @@ package org.commerce.sale_management.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
-import org.commerce.sale_management.constant.RouteConst;
+import org.commerce.sale_management.constant.ApiUrlConstant;
 import org.commerce.sale_management.dto.DinningTableDTO;
 import org.commerce.sale_management.model.DinningTable;
 import org.commerce.sale_management.service.DinningTableService;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * @date : 11/1/2026 1:31 PM
  */
 @RestController
-@RequestMapping(RouteConst.DINNING_TABLE)
+@RequestMapping(ApiUrlConstant.DINNING_TABLE)
 public class DinningTableController {
     @Autowired
     private DinningTableService dinningTableService;

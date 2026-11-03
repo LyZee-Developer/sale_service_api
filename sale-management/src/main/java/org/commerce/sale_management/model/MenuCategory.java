@@ -5,8 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.commerce.sale_management.constant.RequiredFieldConstant;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,14 +23,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuCategory extends BasePrimaryIdEntity {
-    @NotBlank
+    @NotBlank(message = RequiredFieldConstant.NAME)
     private String name;
     private String nameEn;
-    @NotBlank
     private String description;
     private String descriptionEn;
 
     @OneToMany(mappedBy = MenuItem_.CATEGORY, orphanRemoval = true)
     @JsonManagedReference
-    private List<MenuItem> items;
+    private List<MenuItem> items = new ArrayList<>();
 }

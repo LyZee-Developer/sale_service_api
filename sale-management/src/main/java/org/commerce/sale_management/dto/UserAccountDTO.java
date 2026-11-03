@@ -3,7 +3,6 @@ package org.commerce.sale_management.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.commerce.sale_management.constant.EmployeeConst;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.model.User;
 

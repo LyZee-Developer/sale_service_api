@@ -1,5 +1,6 @@
 package org.commerce.sale_management.service.impl.menuItem;
 
+import org.commerce.sale_management.dto.MenuItemDTO;
 import org.commerce.sale_management.model.MenuCategory;
 import org.commerce.sale_management.model.MenuItem;
 import org.commerce.sale_management.repository.MenuItemRepository;
@@ -14,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.awt.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -60,11 +64,29 @@ public class MenuItemServiceImpl extends BaseInternalServiceImpl<MenuItem, Long,
     }
 
     @Override
+    public String changeItemStatusAvailable(Long id, boolean isAvailable) {
+        MenuItem item = getMenuItemOrCreate(id);
+        item.setIsAvailable(isAvailable);
+        update(item);
+        return "The %s is %s now.".formatted(item.getNameEn(), isAvailable ? "available" : "not available");
+    }
+
+    @Override
+    public List<MenuItemDTO> getItemByCategoryId(Long categoryId) {
+        Assert.notNull(categoryId, "category id is required.");
+        List<MenuItem> allItem = repository.findAllByCategoryIdAndIsActivateTrue(categoryId).orElse(Collections.emptyList());
+        if (allItem.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return allItem.stream().map(MenuItemDTO::new).toList();
+    }
+
+    @Override
     public String updateStatus(Long id, boolean isActive) {
         MenuItem menuItem = getOneOrThrow(id);
         menuItem.setIsActivate(isActive);
         update(menuItem);
-        return "%s customer success.".formatted(isActive ? "Enabled" : "Disabled");
+        return "%s food success.".formatted(isActive ? "Enabled" : "Disabled");
     }
 
     @Override
