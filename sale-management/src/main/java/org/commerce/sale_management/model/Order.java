@@ -8,9 +8,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.commerce.sale_management.constant.CustomerConstant;
 import org.commerce.sale_management.constant.OrderConstant;
-import org.hibernate.annotations.Audited;
+import org.commerce.sale_management.enumuration.CustomerEnum;
+import org.commerce.sale_management.enumuration.OrderEnum;
+import org.commerce.sale_management.enumuration.PaymentEnum;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,21 +30,19 @@ import java.util.List;
 @Builder
 @Setter
 @Getter
-@Audited
 public class Order extends BasePrimaryIdEntity {
     @NotBlank
     private String orderNumber;
 
     @Enumerated(EnumType.STRING)
-    private OrderConstant.Status status;
+    private OrderEnum.Status status;
 
     @Enumerated(EnumType.STRING)
-    private CustomerConstant.Type customerType;
+    private CustomerEnum.Type customerType;
 
     @Enumerated(EnumType.STRING)
-    private OrderConstant.PaymentStatus paymentStatus;
+    private PaymentEnum.PaymentStatus paymentStatus;
 
-    @NotNull
     private LocalDateTime orderDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -49,17 +50,12 @@ public class Order extends BasePrimaryIdEntity {
     private DinningTable table;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "code")
+    @JoinColumn(name = "customer_code", referencedColumnName = "code")
     private Customer customer;
 
     @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
-    @NotEmpty
     private List<OrderItem> orders = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
-//    @JsonManagedReference
-//    private List<OrderHistory> orderHistories = new ArrayList<>();
 
     @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference

@@ -4,6 +4,7 @@ import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
+import java.math.BigDecimal;
 import org.module.publish_service.model.BasePrimaryIdEntity_;
 
 /**
@@ -15,9 +16,14 @@ public abstract class Currency_ extends BasePrimaryIdEntity_ {
 
 	
 	/**
-	 * @see #nameKh
+	 * @see #name
 	 **/
-	public static final String NAME_KH = "nameKh";
+	public static final String NAME = "name";
+	
+	/**
+	 * @see #nameEn
+	 **/
+	public static final String NAME_EN = "nameEn";
 	
 	/**
 	 * @see #symbol
@@ -35,11 +41,6 @@ public abstract class Currency_ extends BasePrimaryIdEntity_ {
 	public static final String DECIMAL_PLACES = "decimalPlaces";
 	
 	/**
-	 * @see #nameEn
-	 **/
-	public static final String NAME_EN = "nameEn";
-	
-	/**
 	 * @see #isBase
 	 **/
 	public static final String IS_BASE = "isBase";
@@ -51,9 +52,14 @@ public abstract class Currency_ extends BasePrimaryIdEntity_ {
 	public static volatile EntityType<Currency> class_;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#nameKh}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#name}
 	 **/
-	public static volatile SingularAttribute<Currency, String> nameKh;
+	public static volatile SingularAttribute<Currency, String> name;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#nameEn}
+	 **/
+	public static volatile SingularAttribute<Currency, String> nameEn;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#symbol}
@@ -68,12 +74,7 @@ public abstract class Currency_ extends BasePrimaryIdEntity_ {
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#decimalPlaces}
 	 **/
-	public static volatile SingularAttribute<Currency, Double> decimalPlaces;
-	
-	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#nameEn}
-	 **/
-	public static volatile SingularAttribute<Currency, String> nameEn;
+	public static volatile SingularAttribute<Currency, BigDecimal> decimalPlaces;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Currency#isBase}

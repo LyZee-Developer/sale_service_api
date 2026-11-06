@@ -6,8 +6,9 @@ import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import java.time.LocalDateTime;
-import org.commerce.sale_management.constant.OrderConstant.PaymentStatus;
-import org.commerce.sale_management.constant.OrderConstant.Status;
+import org.commerce.sale_management.enumuration.CustomerEnum.Type;
+import org.commerce.sale_management.enumuration.OrderEnum.Status;
+import org.commerce.sale_management.enumuration.PaymentEnum.PaymentStatus;
 import org.module.publish_service.model.BasePrimaryIdEntity_;
 
 /**
@@ -27,6 +28,11 @@ public abstract class Order_ extends BasePrimaryIdEntity_ {
 	 * @see #status
 	 **/
 	public static final String STATUS = "status";
+	
+	/**
+	 * @see #customerType
+	 **/
+	public static final String CUSTOMER_TYPE = "customerType";
 	
 	/**
 	 * @see #paymentStatus
@@ -54,11 +60,6 @@ public abstract class Order_ extends BasePrimaryIdEntity_ {
 	public static final String ORDERS = "orders";
 	
 	/**
-	 * @see #orderHistories
-	 **/
-	public static final String ORDER_HISTORIES = "orderHistories";
-	
-	/**
 	 * @see #kitchenTickets
 	 **/
 	public static final String KITCHEN_TICKETS = "kitchenTickets";
@@ -78,6 +79,11 @@ public abstract class Order_ extends BasePrimaryIdEntity_ {
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Order#status}
 	 **/
 	public static volatile SingularAttribute<Order, Status> status;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Order#customerType}
+	 **/
+	public static volatile SingularAttribute<Order, Type> customerType;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Order#paymentStatus}
@@ -103,11 +109,6 @@ public abstract class Order_ extends BasePrimaryIdEntity_ {
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Order#orders}
 	 **/
 	public static volatile ListAttribute<Order, OrderItem> orders;
-	
-	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Order#orderHistories}
-	 **/
-	public static volatile ListAttribute<Order, OrderHistory> orderHistories;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.Order#kitchenTickets}

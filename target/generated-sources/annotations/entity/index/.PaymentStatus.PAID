@@ -1,1 +1,1 @@
-org.commerce.sale_management.constant.OrderConstant.PaymentStatus 
+org.commerce.sale_management.enumuration.PaymentEnum.PaymentStatus 

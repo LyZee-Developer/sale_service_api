@@ -23,4 +23,5 @@ public interface MenuItemService extends BaseInternalService<MenuItem, Long, Men
     String changeItemStatusAvailable(Long id, boolean isAvailable);
 
     List<MenuItemDTO> getItemByCategoryId(Long categoryId);
+
 }

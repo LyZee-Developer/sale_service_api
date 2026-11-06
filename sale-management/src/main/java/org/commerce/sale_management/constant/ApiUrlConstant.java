@@ -16,4 +16,7 @@ public interface ApiUrlConstant {
     String MENU_ITEM = API + "/menu-item";
     String CUSTOMER = API + "/customer";
     String ORDER = API + "/order";
+    String CURRENCY = API + "/currency";
+    String EXCHANGE_RATE = API + "/exchange-rate";
+    String FLOOR = API + "/floor";
 }

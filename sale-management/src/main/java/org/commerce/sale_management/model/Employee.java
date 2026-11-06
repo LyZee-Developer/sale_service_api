@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.commerce.sale_management.constant.EmployeeConstant;
+import org.commerce.sale_management.enumuration.EmployeeEnum;
 import org.module.publish_service.model.BasePrimaryIdEntity;
 
 import java.time.LocalDate;
@@ -49,7 +50,7 @@ public class Employee extends BasePrimaryIdEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EmployeeConstant.Status status;
+    private EmployeeEnum.Status status;
 
     private Long departmentId;
     private Long positionId;

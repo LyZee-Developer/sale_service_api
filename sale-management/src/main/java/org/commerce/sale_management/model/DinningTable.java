@@ -2,6 +2,8 @@ package org.commerce.sale_management.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,4 +32,8 @@ public class DinningTable extends BasePrimaryIdEntity {
     @Min(1)
     private Integer capacity;
     private String description;
+
+    @ManyToOne
+    @JoinColumn
+    private Floor floor;
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import java.time.LocalDateTime;
-import org.commerce.sale_management.constant.KitchenTicketConstant.Status;
+import org.commerce.sale_management.enumuration.KitchenTicketEnum.Status;
 
 /**
  * Static metamodel for {@link org.commerce.sale_management.model.KitchenTicket}
@@ -47,9 +47,9 @@ public abstract class KitchenTicket_ {
 	public static final String PRINTED_AT = "printedAt";
 	
 	/**
-	 * @see #employee
+	 * @see #acceptByEmployee
 	 **/
-	public static final String EMPLOYEE = "employee";
+	public static final String ACCEPT_BY_EMPLOYEE = "acceptByEmployee";
 	
 	/**
 	 * @see #status
@@ -98,9 +98,9 @@ public abstract class KitchenTicket_ {
 	public static volatile SingularAttribute<KitchenTicket, LocalDateTime> printedAt;
 	
 	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.KitchenTicket#employee}
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.KitchenTicket#acceptByEmployee}
 	 **/
-	public static volatile SingularAttribute<KitchenTicket, Employee> employee;
+	public static volatile SingularAttribute<KitchenTicket, Employee> acceptByEmployee;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.KitchenTicket#status}

@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.commerce.sale_management.constant.EmployeeConstant;
+import org.commerce.sale_management.enumuration.EmployeeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -40,7 +41,7 @@ public class EmployeeRequest {
     @NotBlank(message = "Identity-card ID is required.")
     private String nID;
     private BigDecimal salary;
-    private String status = EmployeeConstant.Status.ACTIVE.toString();
+    private String status = EmployeeEnum.Status.ACTIVE.toString();
     private Long departmentId;
     private Long positionId;
     private Long lineManager;

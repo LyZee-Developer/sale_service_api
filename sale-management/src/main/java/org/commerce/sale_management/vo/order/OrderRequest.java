@@ -36,7 +36,7 @@ public class OrderRequest {
     private Long tableId;
     private String customerCode;
     @NotEmpty
-    private List<OrderItemRequest> orders = new ArrayList<>();
+    private List<OrderItemRequest> orderItems = new ArrayList<>();
 
     @Getter
     @Setter

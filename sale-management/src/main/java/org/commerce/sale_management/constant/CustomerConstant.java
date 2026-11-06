@@ -8,16 +8,6 @@ import lombok.Getter;
  * @date : 10/26/2026 7:24 PM
  */
 public interface CustomerConstant {
-    @Getter
-    enum Type {
-        GENERAL("General"),
-        STAFF("Staff");
-        private final String description;
-
-        Type(String description) {
-            this.description = description;
-        }
-    }
-
     String STAFF = "Staff";
+    String GENERAL = "General";
 }

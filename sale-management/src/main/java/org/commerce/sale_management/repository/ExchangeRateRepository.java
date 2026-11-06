@@ -9,4 +9,5 @@ import org.module.publish_service.specification.BaseCombineRepositorySpecificati
  * @date : 10/27/2026 5:47 AM
  */
 public interface ExchangeRateRepository extends BaseCombineRepositorySpecification<ExchangeRate, Long> {
+    boolean existsByCurrencyFromCodeAndCurrencyToCodeAndIsActivateTrue(String from, String to);
 }

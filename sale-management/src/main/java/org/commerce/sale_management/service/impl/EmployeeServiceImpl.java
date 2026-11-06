@@ -3,6 +3,7 @@ package org.commerce.sale_management.service.impl;
 import jakarta.transaction.Transactional;
 import org.commerce.sale_management.constant.EmployeeConstant;
 import org.commerce.sale_management.dto.EmployeeDTO;
+import org.commerce.sale_management.enumuration.EmployeeEnum;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.repository.EmployeeRepository;
 import org.commerce.sale_management.service.EmployeeService;
@@ -75,7 +76,7 @@ public class EmployeeServiceImpl extends BaseInternalServiceImpl<Employee, Long,
 
         String generateCode = generateUtil.generateNameWithDateTime(Employee.class.getSimpleName());
         String encryptSalary = sensitiveUtil.encryptNumber(request.getSalary());
-        EmployeeConstant.Status status = enumUtil.validate(EmployeeConstant.Status.class, request.getStatus());
+        EmployeeEnum.Status status = enumUtil.validate(EmployeeEnum.Status.class, request.getStatus());
         Employee lineManager = this.findOne(request.getLineManager()).orElse(null);
 
         emp.setCode(generateCode);

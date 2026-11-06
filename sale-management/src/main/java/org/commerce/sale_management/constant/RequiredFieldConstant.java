@@ -7,6 +7,8 @@ package org.commerce.sale_management.constant;
  */
 public interface RequiredFieldConstant {
     String NAME = "name is required.";
+    String SYMBOL = "name is required.";
+    String CODE = "code is required.";
     String NAME_EN = "name english is required.";
     String DESCRIPTION = "description is required.";
 }

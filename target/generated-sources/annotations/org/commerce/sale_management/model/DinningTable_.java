@@ -28,6 +28,11 @@ public abstract class DinningTable_ extends BasePrimaryIdEntity_ {
 	 * @see #description
 	 **/
 	public static final String DESCRIPTION = "description";
+	
+	/**
+	 * @see #floor
+	 **/
+	public static final String FLOOR = "floor";
 
 	
 	/**
@@ -49,6 +54,11 @@ public abstract class DinningTable_ extends BasePrimaryIdEntity_ {
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DinningTable#description}
 	 **/
 	public static volatile SingularAttribute<DinningTable, String> description;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.DinningTable#floor}
+	 **/
+	public static volatile SingularAttribute<DinningTable, Floor> floor;
 
 }
 

@@ -22,6 +22,7 @@ public class DinningTableRequest {
         private String tableName;
         private int capacity = 1;
         private String description;
+        private Long floorId;
     }
 
     @Getter

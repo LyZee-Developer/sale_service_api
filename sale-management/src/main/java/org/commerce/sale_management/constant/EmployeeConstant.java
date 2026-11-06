@@ -8,16 +8,6 @@ import lombok.Getter;
  * @date : 10/26/2026 6:13 AM
  */
 public interface EmployeeConstant {
-    @Getter
-    enum Status {
-        ACTIVE("Active"),
-        INACTIVE("Inactive");
-
-        private final String description;
-
-        Status(String description) {
-            this.description = description;
-        }
-
-    }
+    String ACTIVE = "Active";
+    String INACTIVE = "Inactive";
 }

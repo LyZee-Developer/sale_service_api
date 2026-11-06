@@ -1,9 +1,13 @@
 package org.commerce.sale_management.service;
 
+import org.commerce.sale_management.dto.DinningTableDTO;
 import org.commerce.sale_management.model.Order;
+import org.commerce.sale_management.model.OrderItem;
 import org.commerce.sale_management.specification.filter.OrderRequestFilter;
 import org.commerce.sale_management.vo.order.OrderRequest;
 import org.module.publish_service.service.BaseInternalService;
+
+import java.util.List;
 
 /**
  * @author : Ly LeangSeng
@@ -14,4 +18,6 @@ public interface OrderService extends BaseInternalService<Order, Long, OrderRequ
     Order order(OrderRequest request);
 
     Order update(OrderRequest request);
+    List<DinningTableDTO> getAvailableTable();
+    List<OrderItem> saveOrderItem(Order order, List<OrderRequest.OrderItemRequest> items);
 }

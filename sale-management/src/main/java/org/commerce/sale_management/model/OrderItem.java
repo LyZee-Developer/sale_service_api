@@ -1,12 +1,17 @@
 package org.commerce.sale_management.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
+import org.commerce.sale_management.enumuration.KitchenTicketEnum;
+import org.commerce.sale_management.enumuration.OrderEnum;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author : Ly LeangSeng
@@ -39,7 +44,14 @@ public class OrderItem {
     @Positive
     private Integer qty;
     private BigDecimal unitPrice;
+    
+    @NotBlank(message = "code is required")
+    private String code;
+
+    @Enumerated(EnumType.STRING)
+    private KitchenTicketEnum.Status status = KitchenTicketEnum.Status.WAITING;
 
     @Column(columnDefinition = "Text")
     private String specialInstructions;
+
 }

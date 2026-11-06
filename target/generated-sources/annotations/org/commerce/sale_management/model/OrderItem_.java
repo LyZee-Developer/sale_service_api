@@ -5,6 +5,7 @@ import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import java.math.BigDecimal;
+import org.commerce.sale_management.enumuration.KitchenTicketEnum.Status;
 
 /**
  * Static metamodel for {@link org.commerce.sale_management.model.OrderItem}
@@ -43,6 +44,16 @@ public abstract class OrderItem_ {
 	 * @see #unitPrice
 	 **/
 	public static final String UNIT_PRICE = "unitPrice";
+	
+	/**
+	 * @see #code
+	 **/
+	public static final String CODE = "code";
+	
+	/**
+	 * @see #status
+	 **/
+	public static final String STATUS = "status";
 	
 	/**
 	 * @see #specialInstructions
@@ -84,6 +95,16 @@ public abstract class OrderItem_ {
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#unitPrice}
 	 **/
 	public static volatile SingularAttribute<OrderItem, BigDecimal> unitPrice;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#code}
+	 **/
+	public static volatile SingularAttribute<OrderItem, String> code;
+	
+	/**
+	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#status}
+	 **/
+	public static volatile SingularAttribute<OrderItem, Status> status;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#specialInstructions}

@@ -1,5 +1,7 @@
 package org.commerce.sale_management.specification.filter;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.module.publish_service.request.BaseInternalRequestFilter;
 
 /**
@@ -7,5 +9,8 @@ import org.module.publish_service.request.BaseInternalRequestFilter;
  * @email : lyleangseng712@gmail.com
  * @date : 11/1/2026 7:30 PM
  */
+@Setter
+@Getter
 public class CustomerRequestFilter extends BaseInternalRequestFilter {
+    private String customerType;
 }

@@ -8,16 +8,6 @@ import lombok.Getter;
  * @date : 10/26/2026 10:46 PM
  */
 public interface KitchenTicketConstant {
-    @Getter
-    enum Status {
-        IN_PROGRESS("In progress"),
-        COMPLETE("Completed");
-
-        private final String description;
-
-        Status(String description) {
-            this.description = description;
-        }
-
-    }
+    String IN_PROGRESS = "In progress";
+    String COMPLETED = "Completed";
 }

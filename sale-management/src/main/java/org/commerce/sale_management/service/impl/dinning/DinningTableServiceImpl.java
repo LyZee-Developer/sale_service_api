@@ -3,16 +3,21 @@ package org.commerce.sale_management.service.impl.dinning;
 import jakarta.persistence.Table;
 import org.commerce.sale_management.dto.DinningTableDTO;
 import org.commerce.sale_management.model.DinningTable;
+import org.commerce.sale_management.model.Floor;
 import org.commerce.sale_management.repository.DinningTableRepository;
 import org.commerce.sale_management.service.DinningTableService;
+import org.commerce.sale_management.service.FloorService;
 import org.commerce.sale_management.specification.DinningTableSpecification;
 import org.commerce.sale_management.specification.filter.DinningTableRequestFilter;
 import org.commerce.sale_management.vo.dinning.DinningTableRequest;
 import org.module.publish_service.constant.App;
 import org.module.publish_service.exception.ApiResponseHandler;
 import org.module.publish_service.service.impl.BaseInternalServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -23,6 +28,9 @@ import java.util.Optional;
  */
 @Service
 public class DinningTableServiceImpl extends BaseInternalServiceImpl<DinningTable, Long, DinningTableRepository, DinningTableRequestFilter, DinningTableSpecification> implements DinningTableService {
+
+    @Autowired
+    private FloorService floorService;
 
     @Override
     public DinningTable save(DinningTableRequest.create req) {
@@ -39,10 +47,13 @@ public class DinningTableServiceImpl extends BaseInternalServiceImpl<DinningTabl
     }
 
     private DinningTable mapData(DinningTableRequest.create req) {
+        Floor floor = floorService.getOne(req.getFloorId()).orElse(null);
+
         return DinningTable.builder()
             .tableName(req.getTableName())
             .description(req.getDescription())
             .capacity(req.getCapacity())
+            .floor(floor)
             .build();
     }
 
@@ -55,14 +66,27 @@ public class DinningTableServiceImpl extends BaseInternalServiceImpl<DinningTabl
     }
 
     @Override
+    public List<DinningTableDTO> availableTable(List<Long> useTableIds) {
+        List<DinningTable> tables = (useTableIds == null || useTableIds.isEmpty())
+            ? repository.findAllByIsActivateTrue()
+            : repository.getTableAvailable(useTableIds);
+        if (tables.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return tables.stream().map(DinningTableDTO::new).toList();
+    }
+
+    @Override
     public DinningTable update(DinningTableRequest.update req) {
         Long id = req.getId();
         validExistedTableName(req.getTableName(), id);
+        Floor floor = floorService.getOne(req.getFloorId()).orElse(null);
 
         DinningTable table = this.getOneOrThrow(id);
         table.setTableName(req.getTableName());
         table.setCapacity(req.getCapacity());
         table.setDescription(req.getDescription());
+        table.setFloor(floor);
         update(table);
         return table;
     }

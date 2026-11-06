@@ -1,6 +1,6 @@
 package org.commerce.sale_management.service.impl.customer;
 
-import org.commerce.sale_management.constant.CustomerConstant;
+import org.commerce.sale_management.enumuration.CustomerEnum;
 import org.commerce.sale_management.model.Customer;
 import org.commerce.sale_management.model.Employee;
 import org.commerce.sale_management.repository.CustomerRepository;
@@ -53,7 +53,7 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
     }
 
     private Customer mpaInfo(CustomerRequest req) {
-        enumUtil.validate(CustomerConstant.Type.class, req.getType());
+        enumUtil.validate(CustomerEnum.Type.class, req.getType());
         Employee employee = checkTypeOrGetEmployee(req);
         String code = generateCode();
         Customer customer = getCustomer(req.getId());
@@ -67,7 +67,7 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
         customer.setPhone1(req.getPhone1());
         customer.setGender(req.getGender());
         customer.setEmail(req.getEmail());
-        customer.setType(CustomerConstant.Type.valueOf(req.getType()));
+        customer.setType(CustomerEnum.Type.valueOf(req.getType()));
         customer.setEmployee(employee);
         return customer;
     }
@@ -90,7 +90,7 @@ public class CustomerServiceImpl extends BaseInternalServiceImpl<Customer, Long,
     }
 
     private Employee checkTypeOrGetEmployee(CustomerRequest req) {
-        boolean isGeneral = CustomerConstant.Type.GENERAL.toString().equals(req.getType());
+        boolean isGeneral = CustomerEnum.Type.GENERAL.toString().equals(req.getType());
         if (isGeneral) {
             return null;
         }

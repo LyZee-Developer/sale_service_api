@@ -56,7 +56,7 @@ public class MenuCategoryServiceImpl extends BaseInternalServiceImpl<MenuCategor
         MenuCategory menuCategory = getMenuCategoryOrThrow(id);
         menuCategory.setIsActivate(isActive);
         update(menuCategory);
-        return "%s customer success.".formatted(isActive ? "Enabled" : "Disabled");
+        return "%s category success.".formatted(isActive ? "Enabled" : "Disabled");
     }
 
     @Override

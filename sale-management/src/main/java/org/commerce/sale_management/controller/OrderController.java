@@ -43,6 +43,11 @@ public class OrderController {
         return ResponseEntity.ok(apiResponse.success(orderService.getOneOrView(id, OrderDTO.class)));
     }
 
+    @GetMapping("/available-table")
+    public ResponseEntity<Object> availableTable() {
+        return ResponseEntity.ok(apiResponse.success(orderService.getAvailableTable()));
+    }
+
     @PostMapping
     public ResponseEntity<Object> create(@Valid @RequestBody OrderRequest request) {
         return ResponseEntity.ok(apiResponse.success(orderService.order(request)));

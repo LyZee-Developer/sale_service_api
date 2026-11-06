@@ -4,7 +4,7 @@ import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
-import org.commerce.sale_management.constant.CustomerConstant.Type;
+import org.commerce.sale_management.enumuration.CustomerEnum.Type;
 import org.module.publish_service.model.BasePrimaryIdEntity_;
 
 /**

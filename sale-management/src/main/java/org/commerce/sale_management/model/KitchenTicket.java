@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.commerce.sale_management.constant.KitchenTicketConstant;
+import org.commerce.sale_management.enumuration.KitchenTicketEnum;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -44,10 +45,10 @@ public class KitchenTicket {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private Employee employee;
+    private Employee acceptByEmployee;
 
     @Enumerated(EnumType.STRING)
-    private KitchenTicketConstant.Status status;
+    private KitchenTicketEnum.Status status;
 
     @OneToMany(mappedBy = "kitchenTicket", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
