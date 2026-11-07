@@ -19,7 +19,7 @@ public interface EmployeeService extends BaseInternalService<Employee, Long, Emp
 
     EmployeeDTO save(EmployeeRequest request);
 
-    EmployeeDTO getOne(Long id);
+    EmployeeDTO getOneById(Long id);
 
     Employee update(Long id, EmployeeRequest request);
 

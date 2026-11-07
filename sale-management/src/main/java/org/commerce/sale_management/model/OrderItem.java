@@ -1,6 +1,7 @@
 package org.commerce.sale_management.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -31,6 +32,15 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
+    @JsonIncludeProperties({
+        "id",
+        "name",
+        "nameEn",
+        "isAvailable",
+        "discount",
+        "description",
+        "descriptionEn",
+    })
     private MenuItem item;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,16 +48,15 @@ public class OrderItem {
     @JsonBackReference
     private Order order;
 
+    @Builder.Default
     private Boolean isCountIn = Boolean.TRUE;
 
     @Min(1)
     @Positive
     private Integer qty;
     private BigDecimal unitPrice;
-    
-    @NotBlank(message = "code is required")
-    private String code;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private KitchenTicketEnum.Status status = KitchenTicketEnum.Status.WAITING;
 

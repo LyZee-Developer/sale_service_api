@@ -58,7 +58,7 @@ public class EmployeeServiceImpl extends BaseInternalServiceImpl<Employee, Long,
     }
 
     @Override
-    public EmployeeDTO getOne(Long id) {
+    public EmployeeDTO getOneById(Long id) {
         return this.findOne(id).map(EmployeeDTO::new).orElse(null);
     }
 

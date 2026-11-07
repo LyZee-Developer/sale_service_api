@@ -1,5 +1,7 @@
 package org.commerce.sale_management.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.commerce.sale_management.model.Floor;
 import org.module.publish_service.view.BaseView;
@@ -10,6 +12,7 @@ import org.module.publish_service.view.BaseView;
  * @date : 11/6/2026 10:47 PM
  */
 @Setter
+@NoArgsConstructor
 public class FloorDTO extends Floor implements BaseView {
     public FloorDTO(Floor org) {
         this.copyAllIncludeProperties(org);

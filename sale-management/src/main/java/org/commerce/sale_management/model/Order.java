@@ -1,5 +1,6 @@
 package org.commerce.sale_management.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -55,10 +56,6 @@ public class Order extends BasePrimaryIdEntity {
 
     @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<OrderItem> orders = new ArrayList<>();
-
-    @OneToMany(mappedBy = "order", orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<KitchenTicket> kitchenTickets;
+    private List<OrderItem> orders;
 
 }

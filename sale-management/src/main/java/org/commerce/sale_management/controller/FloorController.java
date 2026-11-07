@@ -9,8 +9,10 @@ import org.commerce.sale_management.model.DinningTable;
 import org.commerce.sale_management.model.Floor;
 import org.commerce.sale_management.service.DinningTableService;
 import org.commerce.sale_management.service.FloorService;
+import org.commerce.sale_management.service.JDBCTemplateService;
 import org.commerce.sale_management.specification.filter.DinningTableRequestFilter;
 import org.commerce.sale_management.specification.filter.FloorRequestFilter;
+import org.commerce.sale_management.view.FloorView;
 import org.commerce.sale_management.vo.dinning.DinningTableRequest;
 import org.commerce.sale_management.vo.floor.FloorRequest;
 import org.module.publish_service.model.BaseEntity_;
@@ -22,6 +24,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Ly LeangSeng
@@ -36,6 +41,9 @@ public class FloorController {
 
     @Autowired
     private ApiResponse apiResponse;
+
+    @Autowired
+    private JDBCTemplateService jdbcTemplateService;
 
     @GetMapping
     public ResponseEntity<Object> index(@ModelAttribute FloorRequestFilter filter,
@@ -58,6 +66,18 @@ public class FloorController {
     public ResponseEntity<Object> update(@Valid @RequestBody FloorRequest req) {
         Floor floor = floorService.update(req);
         return ResponseEntity.ok(apiResponse.success(new FloorDTO(floor)));
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<Object> test() {
+        List<FloorView> result = jdbcTemplateService.executeScript(
+            "SELECT name, name_en as nameEnglish FROM floor where name_en = :name_test",
+            Map.of(
+                "name_test", "First Floor"
+            ),
+            FloorView.class
+        );
+        return ResponseEntity.ok(apiResponse.success(result));
     }
 
     @GetMapping("/disabled")

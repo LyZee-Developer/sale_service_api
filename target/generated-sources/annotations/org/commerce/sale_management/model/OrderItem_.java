@@ -46,11 +46,6 @@ public abstract class OrderItem_ {
 	public static final String UNIT_PRICE = "unitPrice";
 	
 	/**
-	 * @see #code
-	 **/
-	public static final String CODE = "code";
-	
-	/**
 	 * @see #status
 	 **/
 	public static final String STATUS = "status";
@@ -95,11 +90,6 @@ public abstract class OrderItem_ {
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#unitPrice}
 	 **/
 	public static volatile SingularAttribute<OrderItem, BigDecimal> unitPrice;
-	
-	/**
-	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#code}
-	 **/
-	public static volatile SingularAttribute<OrderItem, String> code;
 	
 	/**
 	 * Static metamodel for attribute {@link org.commerce.sale_management.model.OrderItem#status}

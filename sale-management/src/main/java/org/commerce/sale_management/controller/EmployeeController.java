@@ -51,7 +51,7 @@ public class EmployeeController {
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Object> update(@PathVariable @Positive Long id) {
-        Employee emp = employeeService.getOne(id);
+        Employee emp = employeeService.getOneById(id);
         return ResponseEntity.ok(apiResponse.success(emp));
     }
 
